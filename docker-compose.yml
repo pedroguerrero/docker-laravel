@@ -1,0 +1,27 @@
+version: "3.0"
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: prueba
+      MYSQL_DATABASE: prueba
+    networks:
+      - net-local
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - 8081:80
+    networks:
+      - net-local
+  laravel:
+    build: .
+    ports:
+      - 8080:80
+    networks:
+      - net-local
+    volumes:
+      - ./proyecto:/app
+networks:
+  net-local:
