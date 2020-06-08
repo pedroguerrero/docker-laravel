@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y \
     docker-php-ext-install bz2 && \
     docker-php-ext-install tokenizer && \
     docker-php-ext-install xml && \
+    docker-php-ext-install soap && \
     a2enmod rewrite && \
     a2ensite site && \
     a2dissite 000-default && \
