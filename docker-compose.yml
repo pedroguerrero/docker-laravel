@@ -22,6 +22,6 @@ services:
     networks:
       - net-local
     volumes:
-      - ./proyecto:/app
+      - ./wordpress:/app/public
 networks:
   net-local:

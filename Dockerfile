@@ -4,7 +4,8 @@ RUN mkdir /app && \
     chown www-data:www-data /app
 WORKDIR /app
 
-COPY site.conf /etc/apache2/sites-available
+ADD site.conf /etc/apache2/sites-available
+ADD php.ini-development /usr/local/etc/php/php.ini
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
@@ -28,6 +29,8 @@ RUN apt-get update && apt-get install -y \
     docker-php-ext-install tokenizer && \
     docker-php-ext-install xml && \
     docker-php-ext-install soap && \
+    docker-php-ext-install simplexml && \
+    docker-php-ext-install dom && \
     a2enmod rewrite && \
     a2ensite site && \
     a2dissite 000-default && \
